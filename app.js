@@ -18,9 +18,22 @@ app.use(express.static(__dirname + "/public/"));
 
 
 app.get("/", (req,res) => {
-  res.render("home", {
-    homeStartingContent: homeStartingContent
+  if(posts[0] === undefined || posts[0] === null){
+    let bodyData = {
+      postTitle: "Buen dia",
+      postBody: "Hello World"
+    }
+    posts.push(bodyData);
+      res.render("home", {
+        posts: posts,
+    
+      });
+    
+  } else { 
+      res.render("home", {
+      posts: posts,
   });
+  }
 });
 
 
@@ -50,7 +63,7 @@ app.post("/compose", (req,res)=>{
 // console.log("Title: " + bodyData.postTitle);
 //console.log("Post: " + bodyData.postBody);
   posts.push(bodyData);
-  console.log(posts);
+ // console.log(posts);
   res.redirect("/");
 
 });
