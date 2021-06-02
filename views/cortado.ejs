@@ -1,0 +1,23 @@
+ <%  for(let i=0; i<posts.length; i++){    %>
+    <h2>
+        <%= posts[i].postTitle %>
+    </h2>
+    <p>
+        <%= posts[i].postBody %>
+    </p>
+    <br>
+<% } %>
+
+Cambiado por:
+
+<%  posts.forEach((content) =>{ %>
+    <h2>
+        <%= content.postTitle %>
+    </h2>
+    <p>
+        <%= content.postBody %>
+    </p>
+    <br>
+<% }); %>
+
+Con el forEach recorro de forma mas practica el array / ambos funcionan bien.

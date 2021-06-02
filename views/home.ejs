@@ -1,16 +1,15 @@
 <%- include("partials/header")  -%> 
 <h1>Home</h1>
-
- <%  for(let i=0; i<posts.length; i++){    %>
+<hr>
+<%  posts.forEach((content) =>{ %>
     <h2>
-        <%= posts[i].postTitle %>
+        <%= content.postTitle %>
     </h2>
     <p>
-        <%= posts[i].postBody %>
+        <%= content.postBody %>
     </p>
     <br>
-<% } %>
-
-
+    <hr>
+<% }); %>
 
 <%- include("partials/footer")  -%> 

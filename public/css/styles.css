@@ -1,3 +1,9 @@
+hr {
+  border: dotted #b2b6b6 6px;
+  border-bottom: none;
+  width: 4%;
+  margin: 5px auto;
+}
 .container-fluid {
     padding-top: 70px;
     padding-bottom: 70px;
