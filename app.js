@@ -74,10 +74,12 @@ app.get("/posts/:postName", (req,res)=>{
   posts.forEach((content)=>{
     let storedTitle = _.kebabCase(content.postTitle);
     if (storedTitle === requestedTitle) {
-      console.log("Match found");
-    } else {
-      console.log(storedTitle + " " + requestedTitle);
-    }
+      res.render("post", {
+        postTitle: req.params.postName,
+        postBody: req.params.postBody
+
+      }) ;
+    } 
   });
 });
 
@@ -99,4 +101,6 @@ app.get("*", (req,res) =>{
 })
 app.listen(3000, () => {
   console.log("Server started on port 3000");
+  //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
+  //bdc2ba3a6a76d00a8c59023d28d71aaf
 });
