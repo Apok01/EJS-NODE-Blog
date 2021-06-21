@@ -11,6 +11,8 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 
 const app = express();
 const posts = [];
+const portServer = 3000;
+const linkAdress = "localhost:";
 
 app.set('view engine', 'ejs');
 
@@ -57,14 +59,16 @@ app.get("/compose", (req,res) => {
   res.render("compose");
 });
 app.post("/compose", (req,res)=>{
+  let linkData = linkAdress + portServer + "/posts/" +_.kebabCase(req.body.postTitle);
   let bodyData = {
     postTitle: req.body.postTitle,
-    postBody: req.body.postBody
+    postBody: req.body.postBody,
+    postLink: linkData
   };
 // console.log("Title: " + bodyData.postTitle);
 //console.log("Post: " + bodyData.postBody);
   posts.push(bodyData);
- // console.log(posts);
+  //console.log(posts);
   res.redirect("/");
 
 });
@@ -75,8 +79,9 @@ app.get("/posts/:postName", (req,res)=>{
     let storedTitle = _.kebabCase(content.postTitle);
     if (storedTitle === requestedTitle) {
       res.render("post", {
-        postTitle: req.params.postName,
-        postBody: req.params.postBody
+        postTitle: content.postTitle,
+        postBody: content.postBody
+
 
       }) ;
     } 
@@ -99,8 +104,8 @@ app.get("/posts/:postName", (req,res)=>{
 app.get("*", (req,res) =>{
   res.render("404");
 })
-app.listen(3000, () => {
-  console.log("Server started on port 3000");
+app.listen(portServer, () => {
+  console.log("Server started on port: "+ portServer);
   //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
   //bdc2ba3a6a76d00a8c59023d28d71aaf
 });

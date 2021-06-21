@@ -7,7 +7,11 @@
         <%= content.postTitle %>
     </h2>
     <p>
-        <%= content.postBody %>
+        <%= content.postBody.substring(0, 400) + " ..." %>
+        <a href="<%= content.postLink %>"> Read more </a>
+        <a href="/posts/<%= content.postTitle %>"> Read more </a>
+
+
     </p>
     <br>
     <hr>
